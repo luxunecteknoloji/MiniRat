@@ -13,6 +13,9 @@ DİKKAT:BU REPO EĞİTİM AMAÇLIDIR FARKLI BİR AMAÇLA KULLANMASINDA luxunexte
 4-siteden şu komutlarla bilgisayarı kontrol edebilirsiniz.
 
 
+
+
+
 **tüm kodları iptal eder.**
 
 ```
