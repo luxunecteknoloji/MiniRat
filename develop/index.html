@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxune Shell</title>
+    <style>
+        body {
+            background-color: #000000;
+  background-image: radial-gradient(#11581E, #041607), url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+            color: green;
+            font-family: "Courier New", monospace;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        div {
+            text-align: center;
+            border: 1px solid green;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: black;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+        }
+
+        input, button {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+            background-color: #000;
+    color: #0f0;
+    border: 1px solid #0f0;
+    padding: 5px;
+    font-family: "Courier New", monospace;
+        }
+        .msg {
+            display: none;
+  font-family: monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 5vh;
+  padding-top: 5vh;
+  background: red;
+  box-shadow: 0 0 30px red;
+  text-shadow: 0 0 20px white;
+  color: white;
+  width: auto;
+  height: auto;
+  position: absolute;
+  left: 37%;
+  margin-left: -10vw;
+  top: 30%;
+  margin-top: -5vh;
+  text-align: center;
+  min-width: 200px;
+  animation-name: blink;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+.show-message {
+    display: block !important;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.overlay {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background:
+      repeating-linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0) 100%);
+  background-size: auto 4px;
+  z-index: 1;
+}
+
+.overlay::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+      0deg,
+      transparent 0%,
+      rgba(32, 128, 32, 0.2) 2%,
+      rgba(32, 128, 32, 0.8) 3%,
+      rgba(32, 128, 32, 0.2) 3%,
+      transparent 100%);
+  background-repeat: no-repeat;
+  animation: scan 7.5s linear 0s infinite;
+}
+
+@keyframes scan {
+  0%        { background-position: 0 -100vh; }
+  35%, 100% { background-position: 0 100vh; }
+}
+.noise {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  opacity: .02;
+}
+button {
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <div class="overlay"></div>
+    <div class="noise"></div>
+    <div>
+        <label for="commandInput">Enter Command:</label>
+        <input type="text" id="commandInput">
+        <button id="aa" onclick="executeCommand()">Execute</button>
+    </div>
+
+    <div class="msg" id="messageBox">Mesaj buraya gelecek</div>
+
+    <script>
+        function executeCommand() {
+            var command = document.getElementById("commandInput").value;
+
+            if (command === "/sudo pc_kul -s") {
+                updateStatusOnServer(1);
+                showMessage("Ping Applied to shutdown");
+            } else if (command === "/sudo pc_kul -o") {
+                updateStatusOnServer(0);
+                showMessage("Ping Applied to noshutdown");
+            } else if (command === "/sudo pc_kul fed") {
+                updateStatusOnServer(2);
+                showMessage("Ping Applied to  kon");
+            } else if (command === "/sudo pc_kul -kof") {
+                updateStatusOnServer(3);
+                showMessage("Ping Applied to nokon");
+            } else if (command === "/random_color") {
+                setRandomColors();
+                showMessage("Renkler uygulandı");
+            } else {
+                showMessage("Yanlış Komut!");
+            }
+        }
+
+        function updateStatusOnServer(newStatus) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "us.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+            var data = "status=" + newStatus;
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var response = JSON.parse(xhr.responseText);
+                    showMessage("Status updated: " + response.message);
+                }
+            };
+
+            xhr.send(data);
+        }
+
+        function setRandomColors() {
+            document.body.style.backgroundColor = getRandomColor();
+            document.body.style.color = getRandomColor();
+
+            var divElement = document.querySelector("div");
+            divElement.style.backgroundColor = getRandomColor();
+        }
+
+        function getRandomColor() {
+            var letters = "0123456789ABCDEF";
+            var color = "#";
+            for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function showMessage(message) {
+    var messageBox = document.getElementById("messageBox");
+    messageBox.innerHTML = message;
+    messageBox.classList.add("show-message");
+
+    setTimeout(function () {
+        messageBox.classList.remove("show-message");
+    }, 4000);
+}
+    </script>
+</body>
+</html>
