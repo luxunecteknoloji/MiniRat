@@ -36,3 +36,6 @@ NOT:BUNU YAPMAK İÇİN STATİK İP YE SAHİP BİR SERVERİNİZ OLMASI VEYA BİR
 ```
 /random_color
 ```
+
+![image](https://github.com/luxunecteknoloji/MiniRat/assets/138777189/a598515e-1433-456d-9026-f38405e07be8)
+
