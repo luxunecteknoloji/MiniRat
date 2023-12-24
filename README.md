@@ -6,25 +6,25 @@ DİKKAT:BU REPO EĞİTİM AMAÇLIDIR FARKLI BİR AMAÇLA KULLANMASINDA luxunexte
 
 1-develop dosyasını sitenize atınız.
 
-2-windowsstatus.py dosyasını kendi sitenize göre düzenleyiniz.
+2-windowsstatus.py dosyasındaki url kısmını kendi sitenize göre düzenleyiniz.
 
 3-windowsstatus.py exe ye dönüştürüp bir bilgisayarda çalıştırınız.
 
 4-siteden şu komutlarla bilgisayarı kontrol edebilirsiniz.
 
+
+**tüm kodları iptal eder.**
 ```
-tüm kodları iptal eder.
 /sudo pc_kul -o
 ```
 
+**Bilgisayarı Kapatır.**
 ```
-Bilgisayarı Kapatır.
 /sudo pc_kul -s
 ```
 
 
-
+**Bonus komut**
 ```
-Bonus komut
 /random_color
 ```
