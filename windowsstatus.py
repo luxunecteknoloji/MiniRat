@@ -33,30 +33,25 @@ def check_status():
 def add_to_startup(program_name, program_path):
     key = r"Software\Microsoft\Windows\CurrentVersion\Run"
     try:
-        # Registry anahtarını aç
+
         key_handle = reg.OpenKey(reg.HKEY_CURRENT_USER, key, 0, reg.KEY_SET_VALUE)
 
-        # Registry'ye programın başlangıçta açılması için bilgileri ekle
         reg.SetValueEx(key_handle, program_name, 0, reg.REG_SZ, program_path)
 
-        # Kayıt defteri işlemini kapat
         reg.CloseKey(key_handle)
         print(f"{program_name} başlangıçta açılacak şekilde ayarlandı.")
     except Exception as e:
         print(f"Hata: {e}")
 
 if ctypes.windll.shell32.IsUserAnAdmin() != 0:
-    # Yönetici yetkilerine sahipseniz programı başlangıçta açılacak şekilde ayarlayın
     program_name = "MyPythonProgram"
     program_path = os.path.abspath(sys.argv[0])
     add_to_startup(program_name, program_path)
 
-    # Ana döngü
     while True:
         check_status()
         time.sleep(0.5)
 
 else:
-    # Yönetici yetkileri olmadan çalıştırıldığında uyarı ver
     ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
 
