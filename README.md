@@ -126,7 +126,7 @@ russian
 **Бонусная команда**
 
 ```
-/Случайный цвет
+/random_color
 ```
 
 ![изображение](https://github.com/luxunecteknoloji/MiniRat/assets/138777189/a598515e-1433-456d-9026-f38405e07be8)
