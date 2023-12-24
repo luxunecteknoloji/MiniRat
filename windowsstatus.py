@@ -7,7 +7,7 @@ import sys
 import winreg as reg
 
 def check_status():
-    url = "https://merkuz.xyz/develop/status/index.php"
+    url = "https://yoursite.com/develop/status/index.php"
 
     try:
         response = requests.get(url)
