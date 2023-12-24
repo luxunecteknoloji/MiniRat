@@ -3,6 +3,8 @@
 DİKKAT:BU REPO EĞİTİM AMAÇLIDIR FARKLI BİR AMAÇLA KULLANMASINDA luxunexteknoloji sorumlu değildir. kullanan bunu kabl etmiş sayılır.
 
 
+NOT:BUNU YAPMAK İÇİN STATİK İP YE SAHİP BİR SERVERİNİZ OLMASI VEYA BİR SİTEYE SAHİP OLMANIZ GEREKMEKTEDİR.(BİRAZDA OLSA TEKNİK BİLGİ)
+
 
 1-develop dosyasını sitenize atınız.
 
