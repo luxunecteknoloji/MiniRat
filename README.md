@@ -14,17 +14,20 @@ DİKKAT:BU REPO EĞİTİM AMAÇLIDIR FARKLI BİR AMAÇLA KULLANMASINDA luxunexte
 
 
 **tüm kodları iptal eder.**
+
 ```
 /sudo pc_kul -o
 ```
 
 **Bilgisayarı Kapatır.**
+
 ```
 /sudo pc_kul -s
 ```
 
 
 **Bonus komut**
+
 ```
 /random_color
 ```
